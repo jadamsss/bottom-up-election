@@ -1,0 +1,22 @@
+{
+  "name": "bottom-up-election",
+  "version": "1.0.0",
+  "description": "Simulation for a bottom up election.",
+  "main": "index.ts",
+  "author": "Jacob Adams",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "pretty": "prettier --single-quote --write src/**/*.ts",
+    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec 'ts-node' src/index.ts"
+  },
+  "dependencies": {
+    "d3-array": "2.4.0"
+  },
+  "devDependencies": {
+    "@types/d3-array": "2.0.0",
+    "nodemon": "2.0.3",
+    "prettier": "2.0.5",
+    "typescript": "3.8.3"
+  }
+}
