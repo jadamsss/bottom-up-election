@@ -1,31 +1,4 @@
 {
-  "name": "bottom-up-election",
-  "version": "1.0.0",
-  "description": "Simulation for a bottom up election.",
-  "main": "index.ts",
-  "author": "Jacob Adams",
-  "license": "MIT",
   "private": true,
-  "scripts": {
-    "pretty": "prettier --single-quote --write src/**/*.ts",
-    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec 'ts-node' src/simulation.ts",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@types/d3": "~5.7.2",
-    "d3": "5.16.0",
-    "d3-array": "2.4.0"
-  },
-  "devDependencies": {
-    "@babel/core": "7.10.2",
-    "@babel/preset-env": "7.10.2",
-    "@babel/preset-typescript": "7.10.1",
-    "@types/d3-array": "2.0.0",
-    "@types/jest": "25.2.3",
-    "babel-jest": "26.0.1",
-    "jest": "26.0.1",
-    "nodemon": "2.0.3",
-    "prettier": "2.0.5",
-    "typescript": "3.8.3"
-  }
+  "workspaces": ["bottom-up-election-lib", "client"]
 }
