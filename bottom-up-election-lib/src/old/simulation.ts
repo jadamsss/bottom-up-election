@@ -1,5 +1,5 @@
 import { randomNormal, randomExponential } from 'd3-random';
-import { votingRound, Voter } from './election';
+import { votingRound, Voter } from '../voting';
 
 
 function generateVoterAbilityIndex(iq: number, normalizer = 10) {

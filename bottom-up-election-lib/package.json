@@ -2,7 +2,7 @@
   "name": "bottom-up-election-lib",
   "version": "1.0.0",
   "description": "Library for bottom up elections",
-  "main": "index.ts",
+  "main": "./dist/index.js",
   "author": "Jacob Adams",
   "license": "MIT",
   "private": true,

@@ -1,6 +1,6 @@
-import { Voter, votingSession, votingRound } from '../election';
+import { Voter, votingSession, votingRound } from '../voting';
 
-describe('election', () => {
+describe('voting', () => {
   describe('votingSession', () => {
     it('can return one winner', () => {
       const voters: Voter[] = [

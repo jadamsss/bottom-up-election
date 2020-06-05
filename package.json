@@ -1,4 +1,4 @@
 {
   "private": true,
-  "workspaces": ["client", "lib"]
+  "workspaces": ["client", "bottom-up-election-lib"]
 }

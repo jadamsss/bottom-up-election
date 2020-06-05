@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES3",
+    "lib": ["DOM","ESNext"],
+    "downlevelIteration": true,
+    "outDir": "dist",
+    "declaration": true,
+  },
+  "exclude": ["old"]
+}
