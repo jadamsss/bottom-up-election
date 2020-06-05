@@ -9,7 +9,7 @@
   "scripts": {
     "pretty": "prettier --single-quote --write src/**/*.ts",
     "build": "tsc -p .",
-    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec 'ts-node' src/simulation.ts",
+    "start": "yarn build --watch",
     "test": "jest"
   },
   "dependencies": {

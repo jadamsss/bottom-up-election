@@ -14,32 +14,15 @@ import { Chart } from './Chart';
 import { TextField, Button } from '@material-ui/core';
 import { buildVoters, election, Voter } from 'bottom-up-election-lib';
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButton: {
@@ -72,20 +55,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+let voters: Voter[] = []
+
 export default function Dashboard() {
   const [populationSize, setPopulationSize] = React.useState('1000');
   const [groupSize, setGroupSize] = React.useState('10');
-  const [voters, setVoters] = React.useState<Voter[]>([]);
   const [winners, setWinners] = React.useState<Voter[]>([]);
 
   const validPopluationSize = Number(populationSize) > 2;
   const validGroupSize = Number(groupSize) > 2;
 
   const runSimulation = () => {
-    let tempVoters = buildVoters(Number(populationSize), 100, 15);
-
-    setVoters(tempVoters);
-    setWinners(election(tempVoters, Number(groupSize)));
+    voters = buildVoters(Number(populationSize), 100, 15);
+    setWinners(election(voters, Number(groupSize)));
   }
 
   // Run sim on mount
@@ -153,11 +135,11 @@ export default function Dashboard() {
               </Grid>
             </Grid>
             {/* Charts */}
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Paper className={fixedHeightPaper} style={{ height: '340px'}}>
                 <Chart voters={voters} label="Voters" />
               </Paper>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper} style={{ height: '340px'}}>
                 <Chart voters={winners} label="Winners" />

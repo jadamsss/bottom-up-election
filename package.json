@@ -1,4 +1,14 @@
 {
   "private": true,
-  "workspaces": ["client", "bottom-up-election-lib"]
+  "workspaces": [
+    "bottom-up-election-lib",
+    "client"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "start": "yarn workspaces foreach run start"
+  },
+  "devDependencies": {
+    "workspace-tools": "0.7.6"
+  }
 }
