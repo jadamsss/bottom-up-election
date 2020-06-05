@@ -22,7 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
-import { Input, TextField, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -122,6 +122,9 @@ export default function Dashboard() {
   const [populationSize, setPopulationSize] = React.useState('100000');
   const [groupSize, setGroupSize] = React.useState('10');
 
+  const validPopluationSize = Number(populationSize) > 2;
+  const validGroupSize = Number(groupSize) > 2;
+
   const runSimulation = () => {
     alert('TODO: Run Simulation');
   }
@@ -183,11 +186,33 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Controls */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <TextField label="Population Size" type="number" value={populationSize} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPopulationSize(event.target.value)} required/>
-                <TextField label="Group Size" type="number" value={groupSize} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setGroupSize(event.target.value)} required />
-                <Button onClick={runSimulation} disabled={!populationSize || !groupSize}>Run Simulation</Button>
-              </Paper>
+              <Grid container spacing={3}>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <TextField
+                      label="Population Size"
+                      type="number"
+                      value={populationSize}
+                      onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPopulationSize(event.target.value)}
+                      error={!validPopluationSize}
+                      helperText={!validPopluationSize && 'Population size must be greater than 2'}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <TextField
+                      label="Group Size"
+                      type="number"
+                      value={groupSize}
+                      onChange={(event: React.ChangeEvent<HTMLInputElement>) => setGroupSize(event.target.value)}
+                      error={!validGroupSize}
+                      helperText={!validGroupSize && 'Group size must be greater than 2'}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Button onClick={runSimulation} disabled={!validPopluationSize || !validGroupSize} variant="outlined">Run Simulation</Button>
+                  </Grid>
+              </Grid>
             </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>

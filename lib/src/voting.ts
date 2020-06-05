@@ -3,6 +3,13 @@ export interface Voter {
   votingAbilityIndex: number; // decimal between 0 and 1, higher is better
 }
 
+/**
+ * 
+ * @param candidates The candidates to be voted on
+ * @param voters The voters
+ * 
+ * @returns The winner of the voting session
+ */
 export function votingSession(candidates: Voter[], voters: Voter[]): Voter {
   const sortedCandidates = candidates.slice();
   sortedCandidates.sort((a, b) => a.iq > b.iq ? 1 : -1);
@@ -54,6 +61,14 @@ export function votingSession(candidates: Voter[], voters: Voter[]): Voter {
   }
 }
 
+
+/**
+ * 
+ * @param voters The voters participating in this round of the election
+ * @param groupSize The maximum size of a voting group
+ * 
+ * @returns The winners of the voting round
+ */
 export function votingRound(voters: Voter[], groupSize: number): Voter[] {
   return voters.map((_voter, index) => {
     if (index % groupSize === 0) {
@@ -61,4 +76,19 @@ export function votingRound(voters: Voter[], groupSize: number): Voter[] {
       return votingSession(votingGroup, votingGroup);
     }
   }).filter((winner) => winner !== undefined);
+}
+
+/**
+ * 
+ * @param voters The voters participating in the election
+ * @param groupSize The maximum size of a voting group
+ * 
+ * @returns The winners of the election
+ */
+export function election(voters: Voter[], groupSize: number) {
+  while (voters.length > groupSize) {
+    voters = votingRound(voters, groupSize);
+  }
+
+  return voters;
 }
