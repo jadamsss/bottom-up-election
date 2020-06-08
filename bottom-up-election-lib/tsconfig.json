@@ -5,6 +5,7 @@
     "downlevelIteration": true,
     "outDir": "dist",
     "declaration": true,
+    "sourceMap": true
   },
   "exclude": ["old"],
   "include": ["src"]

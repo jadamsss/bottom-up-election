@@ -9,7 +9,7 @@ import { Voter } from './voting';
  * @returns A number between 0 and 1
  */
 function generateVoterAbilityIndex(iq: number, normalizer = 10) {
-  return 1 - randomExponential(iq / normalizer)();
+  return Math.min(1, Math.max(1 - randomExponential(iq / normalizer)(), 0));
 }
 
 /**
