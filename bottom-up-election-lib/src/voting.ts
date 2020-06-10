@@ -57,6 +57,11 @@ export function votingSession(candidates: Voter[], voters: Voter[]): Voter {
     case 1:
       return sortedCandidates[winners[0]];
     default:
+      // If there is a tie among all candidates, we choose one randomly to be the winner
+      if (winners.length === sortedCandidates.length) {
+        return sortedCandidates[Math.floor(sortedCandidates.length * Math.random())];
+      }
+
       return votingSession(sortedCandidates.filter((_candidate, index) => winners.includes(index)), voters);
   }
 }
