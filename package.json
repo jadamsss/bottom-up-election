@@ -2,7 +2,9 @@
   "private": true,
   "workspaces": [
     "bottom-up-election-lib",
-    "client"
+    "client",
+    "voting-service-eth",
+    "voting-service"
   ],
   "scripts": {
     "build": "yarn workspaces run build",
