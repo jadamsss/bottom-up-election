@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from 'type-graphql';
-import { BaseEntity, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany, Index } from 'typeorm';
 import { Voter } from './Voter';
 import { VotingSession } from './VotingSession';
 
@@ -10,18 +10,19 @@ export class Election extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number | null = null;
 
+  @Field(() => [Voter])
   @ManyToMany(
-    type => Voter,
+    () => Voter,
     voter => voter.elections
   )
   @JoinTable()
   voters: Voter[];
 
+  @Field(() => [VotingSession])
   @OneToMany(
-    type => VotingSession,
+    () => VotingSession,
     VotingSession => VotingSession.election
   )
-  @JoinTable()
   votingSessions!: VotingSession[];
 
   constructor(voters: Voter[]) {

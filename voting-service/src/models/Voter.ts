@@ -25,25 +25,25 @@ export class Voter extends BaseEntity {
   @Column()
   login: string;
 
+  @Field(() => [VotingSession])
   @ManyToMany(
-    type => VotingSession,
+    () => VotingSession,
     votingSession => votingSession.voters
   )
-  @JoinTable()
   votingSessions!: VotingSession[];
 
+  @Field(() => [Election])
   @ManyToMany(
-    type => Election,
+    () => Election,
     election => election.voters
   )
-  @JoinTable()
   elections!: Election[];
 
+  @Field(() => [Vote])
   @OneToMany(
-    type => Vote,
+    () => Vote,
     vote => vote.voter
   )
-  @JoinTable()
   votes!: Vote[];
 
   constructor(firstName: string, lastName: string, login: string) {

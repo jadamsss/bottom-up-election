@@ -1,11 +1,12 @@
-import { Query, Resolver, Arg, Mutation, createUnionType } from 'type-graphql';
+import { ID, Query, Resolver, Arg, Mutation } from 'type-graphql';
 import { Election, Voter, VotingSession } from '../models';
 
 @Resolver()
 export class Resolvers {
+  // Queries
   @Query(() => [ Election ])
   async allElections(): Promise<Election[]> {
-    return await Election.find();
+    return await Election.find({ relations: ['voters', 'votingSessions'] })
   }
 
   @Query(() => [ Voter ])
@@ -18,14 +19,7 @@ export class Resolvers {
     return await VotingSession.find();
   }
 
-  // @Mutation(() => Election)
-  // async createElection(@Arg('voters') voters: Voter[]): Promise<Election> {
-  //   const election = Election.create({ voters })
-  //   await election.save();
-
-  //   return election;
-  // }
-
+  // Mutations
   @Mutation(() => Voter)
   async createVoter(
     @Arg('firstName') firstName: string,
@@ -36,5 +30,17 @@ export class Resolvers {
     await voter.save();
 
     return voter;
+  }
+
+  @Mutation(() => Election)
+  async createElection(
+    @Arg('voterIds', () => [ID]) voterIds: number[]
+  ) {
+    const voters = await Voter.findByIds(voterIds);
+    console.log(voters);
+    const election = Election.create({ voters })
+    await election.save();
+
+    return election;
   }
 }

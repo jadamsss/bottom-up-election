@@ -9,6 +9,5 @@ const options: ConnectionOptions = {
 
 export async function initDb() {
   const connection = await createConnection(options);
-  await connection.dropDatabase();
   await connection.synchronize();
 }

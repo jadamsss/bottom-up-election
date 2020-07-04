@@ -13,21 +13,24 @@ export class Vote extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number | null = null;
 
+  @Field(() => Voter)
   @ManyToOne(
-    type => Voter,
-    voter => voter.votes
+    () => Voter,
+    voter => voter.votes,
+    { eager: true }
   )
-  @JoinTable()
   voter: Voter;
 
+  @Field(() => Voter)
   @ManyToOne(
-    type => Voter,
+    () => Voter,
     voter => voter.votes
   )
   candidate: Voter;
 
+  @Field(() => VotingSession)
   @ManyToOne(
-    type => VotingSession,
+    () => VotingSession,
     votingSession => votingSession.votes
   )
   votingSession: VotingSession;
