@@ -4,6 +4,9 @@
   "main": "src/index.ts",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev":  "ts-node-dev --respawn --transpileOnly ./src/server.ts"
+  },
   "devDependencies": {
     "@types/node": "14.0.14",
     "ts-node-dev": "1.0.0-pre.50",

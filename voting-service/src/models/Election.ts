@@ -22,7 +22,7 @@ export class Election extends BaseEntity {
     VotingSession => VotingSession.election
   )
   @JoinTable()
-  votingSessions: VotingSession[] = [];
+  votingSessions!: VotingSession[];
 
   constructor(voters: Voter[]) {
     super();
