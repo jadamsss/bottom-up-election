@@ -8,6 +8,7 @@
     "dev": "ts-node-dev --respawn --transpileOnly ./src/server.ts"
   },
   "devDependencies": {
+    "@types/faker": "4.1.12",
     "@types/node": "14.0.14",
     "ts-node-dev": "1.0.0-pre.50",
     "typescript": "3.9.6"
@@ -16,6 +17,7 @@
     "apollo-server-express": "2.15.1",
     "class-validator": "0.12.2",
     "express": "4.17.1",
+    "faker": "4.1.0",
     "graphql": "15.2.0",
     "reflect-metadata": "0.1.13",
     "sqlite3": "5.0.0",

@@ -53,4 +53,8 @@ export class Voter extends BaseEntity {
     this.lastName = lastName;
     this.login = login;
   }
+
+  get currentVotingSessions(): VotingSession[] {
+    return this.votingSessions.filter((votingSession) => !votingSession.voterHasVoted(this))
+  }
 }
