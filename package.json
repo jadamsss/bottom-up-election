@@ -11,6 +11,6 @@
     "start": "yarn workspaces foreach run start"
   },
   "devDependencies": {
-    "workspace-tools": "0.7.6"
+    "workspace-tools": "0.18.4"
   }
 }
