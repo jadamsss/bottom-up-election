@@ -20,7 +20,7 @@
     "faker": "4.1.0",
     "graphql": "15.2.0",
     "reflect-metadata": "0.1.13",
-    "sqlite3": "5.0.0",
+    "sqlite3": "5.0.3",
     "type-graphql": "1.0.0-rc.3",
     "typeorm": "0.2.25"
   }
