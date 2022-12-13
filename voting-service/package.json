@@ -16,7 +16,7 @@
   "dependencies": {
     "apollo-server-express": "2.15.1",
     "class-validator": "0.12.2",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "faker": "4.1.0",
     "graphql": "15.2.0",
     "reflect-metadata": "0.1.13",
